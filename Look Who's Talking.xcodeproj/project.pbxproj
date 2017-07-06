@@ -1,0 +1,643 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		365B1CCE1F0C6E6A00E489F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 365B1CCD1F0C6E6A00E489F4 /* GoogleService-Info.plist */; };
+		36A5475B1EEEFB1B00019377 /* SpeakerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A5475A1EEEFB1B00019377 /* SpeakerCollectionViewCell.swift */; };
+		36FD894F1EEB473300FB27CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FD894E1EEB473300FB27CB /* AppDelegate.swift */; };
+		36FD89511EEB473300FB27CB /* RecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FD89501EEB473300FB27CB /* RecordingViewController.swift */; };
+		36FD89541EEB473300FB27CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36FD89521EEB473300FB27CB /* Main.storyboard */; };
+		36FD89561EEB473300FB27CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36FD89551EEB473300FB27CB /* Assets.xcassets */; };
+		36FD89591EEB473300FB27CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36FD89571EEB473300FB27CB /* LaunchScreen.storyboard */; };
+		36FD89641EEB473400FB27CB /* Look_Who_s_TalkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FD89631EEB473400FB27CB /* Look_Who_s_TalkingTests.swift */; };
+		36FD896F1EEB473400FB27CB /* Look_Who_s_TalkingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FD896E1EEB473400FB27CB /* Look_Who_s_TalkingUITests.swift */; };
+		7BC2CEF0FFD11D22490EDC6E /* Pods_Look_Who_s_Talking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2C1E54FCA68BD27D54D164 /* Pods_Look_Who_s_Talking.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		36FD89601EEB473400FB27CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 36FD89431EEB473300FB27CB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 36FD894A1EEB473300FB27CB;
+			remoteInfo = "Look Who's Talking";
+		};
+		36FD896B1EEB473400FB27CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 36FD89431EEB473300FB27CB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 36FD894A1EEB473300FB27CB;
+			remoteInfo = "Look Who's Talking";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		365B1CCD1F0C6E6A00E489F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		36A5475A1EEEFB1B00019377 /* SpeakerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerCollectionViewCell.swift; sourceTree = "<group>"; };
+		36FD894B1EEB473300FB27CB /* Look Who's Talking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Look Who's Talking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		36FD894E1EEB473300FB27CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		36FD89501EEB473300FB27CB /* RecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewController.swift; sourceTree = "<group>"; };
+		36FD89531EEB473300FB27CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		36FD89551EEB473300FB27CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		36FD89581EEB473300FB27CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		36FD895A1EEB473300FB27CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36FD895F1EEB473400FB27CB /* Look Who's TalkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Look Who's TalkingTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		36FD89631EEB473400FB27CB /* Look_Who_s_TalkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Look_Who_s_TalkingTests.swift; sourceTree = "<group>"; };
+		36FD89651EEB473400FB27CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36FD896A1EEB473400FB27CB /* Look Who's TalkingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Look Who's TalkingUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		36FD896E1EEB473400FB27CB /* Look_Who_s_TalkingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Look_Who_s_TalkingUITests.swift; sourceTree = "<group>"; };
+		36FD89701EEB473400FB27CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B2C1E54FCA68BD27D54D164 /* Pods_Look_Who_s_Talking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Look_Who_s_Talking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		934E2D897ED8CAC0416B6F4A /* Pods-Look Who's Talking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Look Who's Talking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Look Who's Talking/Pods-Look Who's Talking.debug.xcconfig"; sourceTree = "<group>"; };
+		B0BA6D38C813B42D066D2FCF /* Pods_Look_Who_s_TalkingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Look_Who_s_TalkingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0CEB82D21FCEA865E21BF0B /* Pods-Look Who's Talking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Look Who's Talking.release.xcconfig"; path = "Pods/Target Support Files/Pods-Look Who's Talking/Pods-Look Who's Talking.release.xcconfig"; sourceTree = "<group>"; };
+		F49883C6DC6DFD6D08822D70 /* Pods_Look_Who_s_TalkingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Look_Who_s_TalkingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		36FD89481EEB473300FB27CB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7BC2CEF0FFD11D22490EDC6E /* Pods_Look_Who_s_Talking.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36FD895C1EEB473400FB27CB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36FD89671EEB473400FB27CB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		36FD89421EEB473300FB27CB = {
+			isa = PBXGroup;
+			children = (
+				36FD894D1EEB473300FB27CB /* Look Who's Talking */,
+				36FD89621EEB473400FB27CB /* Look Who's TalkingTests */,
+				36FD896D1EEB473400FB27CB /* Look Who's TalkingUITests */,
+				36FD894C1EEB473300FB27CB /* Products */,
+				FF8E2437655129697D7E3848 /* Pods */,
+				915AF216E000F3A44B349201 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		36FD894C1EEB473300FB27CB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				36FD894B1EEB473300FB27CB /* Look Who's Talking.app */,
+				36FD895F1EEB473400FB27CB /* Look Who's TalkingTests.xctest */,
+				36FD896A1EEB473400FB27CB /* Look Who's TalkingUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		36FD894D1EEB473300FB27CB /* Look Who's Talking */ = {
+			isa = PBXGroup;
+			children = (
+				36FD894E1EEB473300FB27CB /* AppDelegate.swift */,
+				36FD89501EEB473300FB27CB /* RecordingViewController.swift */,
+				36A5475A1EEEFB1B00019377 /* SpeakerCollectionViewCell.swift */,
+				36FD89521EEB473300FB27CB /* Main.storyboard */,
+				36FD89551EEB473300FB27CB /* Assets.xcassets */,
+				36FD89571EEB473300FB27CB /* LaunchScreen.storyboard */,
+				36FD895A1EEB473300FB27CB /* Info.plist */,
+				365B1CCD1F0C6E6A00E489F4 /* GoogleService-Info.plist */,
+			);
+			path = "Look Who's Talking";
+			sourceTree = "<group>";
+		};
+		36FD89621EEB473400FB27CB /* Look Who's TalkingTests */ = {
+			isa = PBXGroup;
+			children = (
+				36FD89631EEB473400FB27CB /* Look_Who_s_TalkingTests.swift */,
+				36FD89651EEB473400FB27CB /* Info.plist */,
+			);
+			path = "Look Who's TalkingTests";
+			sourceTree = "<group>";
+		};
+		36FD896D1EEB473400FB27CB /* Look Who's TalkingUITests */ = {
+			isa = PBXGroup;
+			children = (
+				36FD896E1EEB473400FB27CB /* Look_Who_s_TalkingUITests.swift */,
+				36FD89701EEB473400FB27CB /* Info.plist */,
+			);
+			path = "Look Who's TalkingUITests";
+			sourceTree = "<group>";
+		};
+		915AF216E000F3A44B349201 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6B2C1E54FCA68BD27D54D164 /* Pods_Look_Who_s_Talking.framework */,
+				B0BA6D38C813B42D066D2FCF /* Pods_Look_Who_s_TalkingTests.framework */,
+				F49883C6DC6DFD6D08822D70 /* Pods_Look_Who_s_TalkingUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FF8E2437655129697D7E3848 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				934E2D897ED8CAC0416B6F4A /* Pods-Look Who's Talking.debug.xcconfig */,
+				E0CEB82D21FCEA865E21BF0B /* Pods-Look Who's Talking.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		36FD894A1EEB473300FB27CB /* Look Who's Talking */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 36FD89731EEB473400FB27CB /* Build configuration list for PBXNativeTarget "Look Who's Talking" */;
+			buildPhases = (
+				CBB589A891C883AD84495D65 /* [CP] Check Pods Manifest.lock */,
+				36FD89471EEB473300FB27CB /* Sources */,
+				36FD89481EEB473300FB27CB /* Frameworks */,
+				36FD89491EEB473300FB27CB /* Resources */,
+				CE69536E95A888925E87FC06 /* [CP] Embed Pods Frameworks */,
+				A714A824FE2D05A96679E086 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Look Who's Talking";
+			productName = "Look Who's Talking";
+			productReference = 36FD894B1EEB473300FB27CB /* Look Who's Talking.app */;
+			productType = "com.apple.product-type.application";
+		};
+		36FD895E1EEB473400FB27CB /* Look Who's TalkingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 36FD89761EEB473400FB27CB /* Build configuration list for PBXNativeTarget "Look Who's TalkingTests" */;
+			buildPhases = (
+				36FD895B1EEB473400FB27CB /* Sources */,
+				36FD895C1EEB473400FB27CB /* Frameworks */,
+				36FD895D1EEB473400FB27CB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				36FD89611EEB473400FB27CB /* PBXTargetDependency */,
+			);
+			name = "Look Who's TalkingTests";
+			productName = "Look Who's TalkingTests";
+			productReference = 36FD895F1EEB473400FB27CB /* Look Who's TalkingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		36FD89691EEB473400FB27CB /* Look Who's TalkingUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 36FD89791EEB473400FB27CB /* Build configuration list for PBXNativeTarget "Look Who's TalkingUITests" */;
+			buildPhases = (
+				36FD89661EEB473400FB27CB /* Sources */,
+				36FD89671EEB473400FB27CB /* Frameworks */,
+				36FD89681EEB473400FB27CB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				36FD896C1EEB473400FB27CB /* PBXTargetDependency */,
+			);
+			name = "Look Who's TalkingUITests";
+			productName = "Look Who's TalkingUITests";
+			productReference = 36FD896A1EEB473400FB27CB /* Look Who's TalkingUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		36FD89431EEB473300FB27CB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0900;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "Team Chatty Kathy";
+				TargetAttributes = {
+					36FD894A1EEB473300FB27CB = {
+						CreatedOnToolsVersion = 9.0;
+					};
+					36FD895E1EEB473400FB27CB = {
+						CreatedOnToolsVersion = 9.0;
+						TestTargetID = 36FD894A1EEB473300FB27CB;
+					};
+					36FD89691EEB473400FB27CB = {
+						CreatedOnToolsVersion = 9.0;
+						TestTargetID = 36FD894A1EEB473300FB27CB;
+					};
+				};
+			};
+			buildConfigurationList = 36FD89461EEB473300FB27CB /* Build configuration list for PBXProject "Look Who's Talking" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 36FD89421EEB473300FB27CB;
+			productRefGroup = 36FD894C1EEB473300FB27CB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				36FD894A1EEB473300FB27CB /* Look Who's Talking */,
+				36FD895E1EEB473400FB27CB /* Look Who's TalkingTests */,
+				36FD89691EEB473400FB27CB /* Look Who's TalkingUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		36FD89491EEB473300FB27CB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36FD89591EEB473300FB27CB /* LaunchScreen.storyboard in Resources */,
+				365B1CCE1F0C6E6A00E489F4 /* GoogleService-Info.plist in Resources */,
+				36FD89561EEB473300FB27CB /* Assets.xcassets in Resources */,
+				36FD89541EEB473300FB27CB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36FD895D1EEB473400FB27CB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36FD89681EEB473400FB27CB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A714A824FE2D05A96679E086 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Look Who's Talking/Pods-Look Who's Talking-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CBB589A891C883AD84495D65 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CE69536E95A888925E87FC06 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Look Who's Talking/Pods-Look Who's Talking-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		36FD89471EEB473300FB27CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36A5475B1EEEFB1B00019377 /* SpeakerCollectionViewCell.swift in Sources */,
+				36FD89511EEB473300FB27CB /* RecordingViewController.swift in Sources */,
+				36FD894F1EEB473300FB27CB /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36FD895B1EEB473400FB27CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36FD89641EEB473400FB27CB /* Look_Who_s_TalkingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		36FD89661EEB473400FB27CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36FD896F1EEB473400FB27CB /* Look_Who_s_TalkingUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		36FD89611EEB473400FB27CB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 36FD894A1EEB473300FB27CB /* Look Who's Talking */;
+			targetProxy = 36FD89601EEB473400FB27CB /* PBXContainerItemProxy */;
+		};
+		36FD896C1EEB473400FB27CB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 36FD894A1EEB473300FB27CB /* Look Who's Talking */;
+			targetProxy = 36FD896B1EEB473400FB27CB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		36FD89521EEB473300FB27CB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				36FD89531EEB473300FB27CB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		36FD89571EEB473300FB27CB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				36FD89581EEB473300FB27CB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		36FD89711EEB473400FB27CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		36FD89721EEB473400FB27CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		36FD89741EEB473400FB27CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 934E2D897ED8CAC0416B6F4A /* Pods-Look Who's Talking.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 739D5HF686;
+				INFOPLIST_FILE = "Look Who's Talking/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "JP.Look-Who-s-Talking";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		36FD89751EEB473400FB27CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0CEB82D21FCEA865E21BF0B /* Pods-Look Who's Talking.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 739D5HF686;
+				INFOPLIST_FILE = "Look Who's Talking/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "JP.Look-Who-s-Talking";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		36FD89771EEB473400FB27CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 739D5HF686;
+				INFOPLIST_FILE = "Look Who's TalkingTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "JP.Look-Who-s-TalkingTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Look Who's Talking.app/Look Who's Talking";
+			};
+			name = Debug;
+		};
+		36FD89781EEB473400FB27CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 739D5HF686;
+				INFOPLIST_FILE = "Look Who's TalkingTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "JP.Look-Who-s-TalkingTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Look Who's Talking.app/Look Who's Talking";
+			};
+			name = Release;
+		};
+		36FD897A1EEB473400FB27CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 739D5HF686;
+				INFOPLIST_FILE = "Look Who's TalkingUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "JP.Look-Who-s-TalkingUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Look Who's Talking";
+			};
+			name = Debug;
+		};
+		36FD897B1EEB473400FB27CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 739D5HF686;
+				INFOPLIST_FILE = "Look Who's TalkingUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "JP.Look-Who-s-TalkingUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Look Who's Talking";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		36FD89461EEB473300FB27CB /* Build configuration list for PBXProject "Look Who's Talking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36FD89711EEB473400FB27CB /* Debug */,
+				36FD89721EEB473400FB27CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		36FD89731EEB473400FB27CB /* Build configuration list for PBXNativeTarget "Look Who's Talking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36FD89741EEB473400FB27CB /* Debug */,
+				36FD89751EEB473400FB27CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		36FD89761EEB473400FB27CB /* Build configuration list for PBXNativeTarget "Look Who's TalkingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36FD89771EEB473400FB27CB /* Debug */,
+				36FD89781EEB473400FB27CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		36FD89791EEB473400FB27CB /* Build configuration list for PBXNativeTarget "Look Who's TalkingUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				36FD897A1EEB473400FB27CB /* Debug */,
+				36FD897B1EEB473400FB27CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 36FD89431EEB473300FB27CB /* Project object */;
+}
