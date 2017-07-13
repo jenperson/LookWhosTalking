@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		364309D61F16915C00C61BBC /* RecordingHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364309D51F16915C00C61BBC /* RecordingHistoryViewController.swift */; };
+		364654471F101D31005879F1 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364654461F101D31005879F1 /* Utils.swift */; };
 		365B1CCE1F0C6E6A00E489F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 365B1CCD1F0C6E6A00E489F4 /* GoogleService-Info.plist */; };
 		36A5475B1EEEFB1B00019377 /* SpeakerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A5475A1EEEFB1B00019377 /* SpeakerCollectionViewCell.swift */; };
+		36D9AA581F16F59700D9E4F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36D9AA561F16F53F00D9E4F1 /* Main.storyboard */; };
 		36FD894F1EEB473300FB27CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FD894E1EEB473300FB27CB /* AppDelegate.swift */; };
 		36FD89511EEB473300FB27CB /* RecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FD89501EEB473300FB27CB /* RecordingViewController.swift */; };
-		36FD89541EEB473300FB27CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36FD89521EEB473300FB27CB /* Main.storyboard */; };
 		36FD89561EEB473300FB27CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36FD89551EEB473300FB27CB /* Assets.xcassets */; };
 		36FD89591EEB473300FB27CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36FD89571EEB473300FB27CB /* LaunchScreen.storyboard */; };
 		36FD89641EEB473400FB27CB /* Look_Who_s_TalkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FD89631EEB473400FB27CB /* Look_Who_s_TalkingTests.swift */; };
@@ -37,12 +39,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		364309D51F16915C00C61BBC /* RecordingHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingHistoryViewController.swift; sourceTree = "<group>"; };
+		364654461F101D31005879F1 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		365B1CCD1F0C6E6A00E489F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		36A5475A1EEEFB1B00019377 /* SpeakerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerCollectionViewCell.swift; sourceTree = "<group>"; };
+		36D9AA571F16F53F00D9E4F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		36FD894B1EEB473300FB27CB /* Look Who's Talking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Look Who's Talking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36FD894E1EEB473300FB27CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36FD89501EEB473300FB27CB /* RecordingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewController.swift; sourceTree = "<group>"; };
-		36FD89531EEB473300FB27CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		36FD89551EEB473300FB27CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36FD89581EEB473300FB27CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		36FD895A1EEB473300FB27CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -112,9 +116,11 @@
 			children = (
 				36FD894E1EEB473300FB27CB /* AppDelegate.swift */,
 				36FD89501EEB473300FB27CB /* RecordingViewController.swift */,
+				364654461F101D31005879F1 /* Utils.swift */,
 				36A5475A1EEEFB1B00019377 /* SpeakerCollectionViewCell.swift */,
-				36FD89521EEB473300FB27CB /* Main.storyboard */,
+				364309D51F16915C00C61BBC /* RecordingHistoryViewController.swift */,
 				36FD89551EEB473300FB27CB /* Assets.xcassets */,
+				36D9AA561F16F53F00D9E4F1 /* Main.storyboard */,
 				36FD89571EEB473300FB27CB /* LaunchScreen.storyboard */,
 				36FD895A1EEB473300FB27CB /* Info.plist */,
 				365B1CCD1F0C6E6A00E489F4 /* GoogleService-Info.plist */,
@@ -266,10 +272,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36D9AA581F16F59700D9E4F1 /* Main.storyboard in Resources */,
 				36FD89591EEB473300FB27CB /* LaunchScreen.storyboard in Resources */,
 				365B1CCE1F0C6E6A00E489F4 /* GoogleService-Info.plist in Resources */,
 				36FD89561EEB473300FB27CB /* Assets.xcassets in Resources */,
-				36FD89541EEB473300FB27CB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,7 +350,9 @@
 			files = (
 				36A5475B1EEEFB1B00019377 /* SpeakerCollectionViewCell.swift in Sources */,
 				36FD89511EEB473300FB27CB /* RecordingViewController.swift in Sources */,
+				364309D61F16915C00C61BBC /* RecordingHistoryViewController.swift in Sources */,
 				36FD894F1EEB473300FB27CB /* AppDelegate.swift in Sources */,
+				364654471F101D31005879F1 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,10 +388,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		36FD89521EEB473300FB27CB /* Main.storyboard */ = {
+		36D9AA561F16F53F00D9E4F1 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				36FD89531EEB473300FB27CB /* Base */,
+				36D9AA571F16F53F00D9E4F1 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

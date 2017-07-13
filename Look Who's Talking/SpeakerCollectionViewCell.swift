@@ -17,12 +17,16 @@ class SpeakerCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var speakerTextField: UITextField!
     @IBOutlet weak var speakerTimeLabel: UILabel!
     @IBOutlet weak var speakerLabel: UILabel!
+    @IBOutlet weak var percentSpeakerLabel: UILabel!
     
     func populateCell(speaker: String, time: Float) {
         speakerTextField.backgroundColor = UIColor.clear
-        //speakerTextField.text = speaker + " " + time.description
+        speakerTimeLabel.textColor = UIColor.gray
+        speakerLabel.textColor = UIColor.gray
+        percentSpeakerLabel.textColor = UIColor.gray
         speakerTimeLabel.text = time.description
         speakerLabel.text = speaker
+        percentSpeakerLabel.text = "0%"
     }
 }
 
@@ -38,7 +42,7 @@ extension SpeakerCollectionViewCell: UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         // disable textField when recording. You cannot change name in the middle of recording
-        if isRecording == true {
+        if audioStatus == .Recording {
             return false
         }
         return true
