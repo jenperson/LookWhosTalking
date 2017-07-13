@@ -7,18 +7,20 @@
 //
 
 import UIKit
+import Firebase
 
 class RecordingHistoryViewController: UIViewController {
-
+    
+    var ref: DatabaseReference!
+    var recordingRef: DatabaseReference!
+    var curruser = "testUser"
+    var recordings = [DataSnapshot]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        ref = Database.database().reference()
         // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 
@@ -32,4 +34,32 @@ class RecordingHistoryViewController: UIViewController {
     }
     */
 
+}
+
+extension RecordingViewController: UITableViewDelegate, UITableViewDataSource {
+    @available(iOS 2.0, *)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    @available(iOS 2.0, *)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.cellForRow(at: indexPath) as! RecordingHistoryTableViewCell
+        
+        return cell
+    }
+    
+    
+}
+
+// MARK: Database handle
+
+extension RecordingHistoryViewController {
+    
+    func configureDatabase() {
+        recordingRef = ref?.child(curruser)
+        recordingRef?.observe(.childAdded, with: { snapshot in
+            self.recordings.append(snapshot)
+        })
+    }
 }

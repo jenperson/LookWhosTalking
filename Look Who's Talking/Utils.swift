@@ -1,9 +1,10 @@
+
 //
 //  Utils.swift
-//  Sound Butler
+//  Look Who's Talking
 //
-//  Created by Michael Briscoe on 12/14/15.
-//  Copyright © 2015 Razeware. All rights reserved.
+//  Added by Jen Person on 6/9/17. (Created by Michael Briscoe on 12/14/15.)
+//  Copyright © 2017 Team Chatty Kathy. All rights reserved.
 //
 
 import Foundation
