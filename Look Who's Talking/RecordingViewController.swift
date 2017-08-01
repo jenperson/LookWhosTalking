@@ -11,7 +11,7 @@ import AVFoundation
 import Firebase
 
 let newSpeaker = NSNotification.Name("newSpeaker")
-var isRecording = false
+//var isRecording = false
 var audioStatus: AudioStatus = AudioStatus.Stopped
 
 class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioRecorderDelegate {
@@ -80,7 +80,7 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
                 print("Cannot authenticate -- \(error)")
                 return
             }
-            let isAnonymous = user!.isAnonymous  // true
+            //let isAnonymous = user!.isAnonymous  // true
             self.userId = user!.uid
             self.configureDatabase()
         }
@@ -95,6 +95,7 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
     // set up default speakers
     func configureView() {
         playbackProgressView.progress = 0
+        recordProgressView.progress = 0
         audioStatus = .Stopped
         recordButton.isUserInteractionEnabled = false
         numSpeakers.minimumValue = 2
@@ -108,10 +109,7 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
     @objc func updateSpeakers() {
         for i in 0..<speakers.count {
             let cell = speakersCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as! SpeakerCollectionViewCell
-            //if speakers[i] == " " {
                 speakers[i] = cell.speakerLabel.text!
-           // }
-            
         }
         updatePercentSpeakingTime()
     }
@@ -128,8 +126,6 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
     
     // check if all speakers are filled in before allowing record
     func checkSpeakers() -> Bool {
-        print(speakers.count)
-        print(speakers.description)
         for speaker in speakers {
             if speaker == " " {
                 return false
@@ -174,9 +170,9 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
         return documentsDirectory
     }
     
-    func enableSpeakers(isEnabled: Bool) {
+   /* func enableSpeakers(isEnabled: Bool) {
         isRecording = !isEnabled
-    }
+    }*/
     
     func startRecording() {
         if appHasMicAccess == true {
@@ -235,38 +231,7 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
         speakersCollectionView.reloadData()
     }
     
-    // MARK: IBActions
-    
-    @IBAction func numSpeakerValueChanged(_ sender: Any) {
-        let stepper = sender as! UIStepper
-        let currVal = Int(stepper.value)
-        updateNumSpeakers(val: currVal)
-    }
-    
-    func highlightCell(speakerCell: SpeakerCollectionViewCell, isHighlighted: Bool) {
-        if isHighlighted {
-            speakerCell.backgroundColor = UIColor.white
-            speakerCell.speakerTimeLabel.textColor = UIColor.black
-            speakerCell.speakerLabel.textColor = UIColor.black
-            speakerCell.percentSpeakerLabel.textColor = UIColor.black
-        } else {
-            speakerCell.speakerTimeLabel.textColor = UIColor.white
-            speakerCell.speakerLabel.textColor = UIColor.white
-            speakerCell.percentSpeakerLabel.textColor = UIColor.white
-            speakerCell.backgroundColor = UIColor.blue
-        }
-    }
-    
-    @objc func updatePlaybackProgressView() {
-        let length = audioPlayer.duration
-        playSeconds+=1
-        if playSeconds > Float(length) {
-            playTimer?.invalidate()
-            return
-        }
-        playbackProgressView.progress = 0
-        self.playbackProgressView.progress = Float(playSeconds/Float(length))
-    }
+    // MARK: UI
     
     func confirmRecordAlert() {
         let alert = UIAlertController(title: "Recording Complete", message: "Save Recording?", preferredStyle: .alert)
@@ -294,56 +259,6 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
         self.present(alert, animated: true, completion: nil)
     }
     
-    func finishRecording(success: Bool) {
-        audioRecorder?.stop()
-        removeHighlighted(collectionView: speakersCollectionView)
-        enableSpeakers(isEnabled: true)
-        
-        if success {
-            confirmRecordAlert()
-        } else {
-            // recording failed :(
-        }
-        recordButton.setTitle("Record", for: .normal)
-    }
-    
-    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        if !flag {
-            finishRecording(success: false)
-        }
-        audioStatus = .Stopped
-    }
-    
-    func cleanUpViewAfterRecording() {
-        for i in 0..<self.speakers.count {
-            self.speakerTimes[i] = 0.0
-        }
-        recordProgressView.progress = 0
-        updateSpeakingTime()
-        updatePercentSpeakingTime()
-        seconds = 0.0
-        currentSpeakerTime = 0.0
-        recordLabel.text = seconds.description
-        
-    }
-    
-    func endTimer() {
-        timer?.invalidate()
-    }
-    
-    func removeHighlighted(collectionView: UICollectionView) {
-        for i in 0..<speakers.count {
-            let cell = collectionView.cellForItem(at: IndexPath(item: i, section: 0)) as! SpeakerCollectionViewCell
-            if cell.backgroundColor == UIColor.blue {
-                let totalTime = seconds - currentSpeakerTime
-                // why is this negative??
-                speakerTimes[i] += totalTime
-                collectionView.reloadItems(at: [IndexPath(item: i, section: 0)])
-                highlightCell(speakerCell: cell, isHighlighted: true)
-            }
-        }
-    }
-    
     func totalSpeakingTime() -> Float {
         var totSpeakingTime: Float = 0.0
         for speakerTime in speakerTimes {
@@ -353,24 +268,19 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
         return totSpeakingTime
     }
     
-    func updatePercentSpeakingTime() {
-        let speakerTime = totalSpeakingTime()
-        for i in 0..<speakers.count {
-            let cell = speakersCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as! SpeakerCollectionViewCell
-            let percent = Float((speakerTimes[i]/speakerTime)*100).description
-            if percent != "nan" {
-                cell.percentSpeakerLabel.text = Float((speakerTimes[i]/speakerTime)*100).description + "%"
-            } else {
-                cell.percentSpeakerLabel.text = "0%"
-            }
+    @objc func setProgress() {
+        seconds+=1
+        // stop timer after certain interval
+        if seconds > MAX_TIME {
+            endTimer()
+            seconds = 0.0
+            // enable stepper when timer ends
+            numSpeakers.isEnabled = true
+            finishRecording(success: true)
+            return
         }
-    }
-    
-    func updateSpeakingTime() {
-        for i in 0..<speakers.count {
-            let cell = speakersCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as! SpeakerCollectionViewCell
-            cell.speakerTimeLabel.text = speakerTimes[i].description
-        }
+        recordLabel.text = seconds.description
+        recordProgressView.progress = Float(seconds/MAX_TIME)
     }
     
     func handleSelectedSpeaker(indexPath: IndexPath, collectionView: UICollectionView) {
@@ -398,20 +308,99 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
         }
     }
     
-    @objc func setProgress() {
-        seconds+=1
-        // stop timer after certain interval
-        if seconds > MAX_TIME {
-            endTimer()
-            seconds = 0.0
-            // enable stepper when timer ends
-            numSpeakers.isEnabled = true
-            finishRecording(success: true)
+    func highlightCell(speakerCell: SpeakerCollectionViewCell, isHighlighted: Bool) {
+        if isHighlighted {
+            speakerCell.backgroundColor = UIColor.white
+            speakerCell.speakerTimeLabel.textColor = UIColor.black
+            speakerCell.speakerLabel.textColor = UIColor.black
+            speakerCell.percentSpeakerLabel.textColor = UIColor.black
+        } else {
+            speakerCell.speakerTimeLabel.textColor = UIColor.white
+            speakerCell.speakerLabel.textColor = UIColor.white
+            speakerCell.percentSpeakerLabel.textColor = UIColor.white
+            speakerCell.backgroundColor = UIColor.blue
+        }
+    }
+    
+    func removeHighlighted(collectionView: UICollectionView) {
+        for i in 0..<speakers.count {
+            let cell = collectionView.cellForItem(at: IndexPath(item: i, section: 0)) as! SpeakerCollectionViewCell
+            if cell.backgroundColor == UIColor.blue {
+                let totalTime = seconds - currentSpeakerTime
+                // why is this negative??
+                speakerTimes[i] += totalTime
+                collectionView.reloadItems(at: [IndexPath(item: i, section: 0)])
+                highlightCell(speakerCell: cell, isHighlighted: true)
+            }
+        }
+    }
+    
+    func cleanUpViewAfterRecording() {
+        for i in 0..<self.speakers.count {
+            self.speakerTimes[i] = 0.0
+        }
+        recordProgressView.progress = 0
+        updateSpeakingTime()
+        updatePercentSpeakingTime()
+        seconds = 0.0
+        currentSpeakerTime = 0.0
+        recordLabel.text = seconds.description
+        
+    }
+    
+    func updatePercentSpeakingTime() {
+        let speakerTime = totalSpeakingTime()
+        for i in 0..<speakers.count {
+            let cell = speakersCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as! SpeakerCollectionViewCell
+            let percent = Float((speakerTimes[i]/speakerTime)*100).description
+            if percent != "nan" {
+                cell.percentSpeakerLabel.text = Float((speakerTimes[i]/speakerTime)*100).description + "%"
+            } else {
+                cell.percentSpeakerLabel.text = "0%"
+            }
+        }
+    }
+    
+    func updateSpeakingTime() {
+        for i in 0..<speakers.count {
+            let cell = speakersCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as! SpeakerCollectionViewCell
+            cell.speakerTimeLabel.text = speakerTimes[i].description
+        }
+    }
+    
+    func setPlayButtonOn(flag: Bool) {
+        if flag == true {
+            playButton.setImage(UIImage(named: "ic_play_arrow"), for: .normal)
+            playButton.tintColor = UIColor.black
+        } else {
+            playButton.setImage(UIImage(named: "ic_play_arrow"), for: .normal)
+            playButton.tintColor = UIColor.red
+        }
+    }
+    
+    @objc func updatePlaybackProgressView() {
+        let length = audioPlayer.duration
+        playSeconds+=1
+        if playSeconds > Float(length) {
+            playTimer?.invalidate()
             return
         }
-        recordLabel.text = seconds.description
-        recordProgressView.progress = Float(seconds/MAX_TIME)
+        playbackProgressView.progress = 0
+        self.playbackProgressView.progress = Float(playSeconds/Float(length))
     }
+    
+    func endTimer() {
+        timer?.invalidate()
+    }
+    
+    // MARK: IBActions
+    
+    @IBAction func numSpeakerValueChanged(_ sender: Any) {
+        let stepper = sender as! UIStepper
+        let currVal = Int(stepper.value)
+        updateNumSpeakers(val: currVal)
+    }
+    
     @IBAction func playPressed(_ sender: UIButton) {
         if audioStatus != .Recording {
             
@@ -455,17 +444,28 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
         }
     }
     
-    func setPlayButtonOn(flag: Bool) {
-        if flag == true {
-            playButton.setImage(UIImage(named: "ic_play_arrow"), for: .normal)
-            playButton.tintColor = UIColor.black
+    // MARK: Recording
+    
+    func finishRecording(success: Bool) {
+        audioRecorder?.stop()
+        removeHighlighted(collectionView: speakersCollectionView)
+        //enableSpeakers(isEnabled: true)
+        
+        if success {
+            confirmRecordAlert()
         } else {
-            playButton.setImage(UIImage(named: "ic_play_arrow"), for: .normal)
-            playButton.tintColor = UIColor.red
+            // recording failed :(
         }
+        recordButton.setTitle("Record", for: .normal)
     }
     
-    // MARK: Recording
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        if !flag {
+            finishRecording(success: false)
+        }
+        audioStatus = .Stopped
+    }
+    
     func setupRecorder() {
         let fileURL = getURLforMemo()
         
@@ -500,13 +500,14 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
     }
     
     // MARK: Playback
+    
     func  play() {
         let fileURL = getURLforMemo()
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: fileURL as URL)
             audioPlayer.delegate = self
             if audioPlayer.duration > 0.0 {
-                setPlayButtonOn(flag: true)
+                //setPlayButtonOn(flag: true)
                 audioPlayer.play()
                 updatePlaybackProgressView()
                 audioStatus = .Playing
@@ -519,14 +520,16 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
     
     func stopPlayback() {
         audioPlayer.stop()
-        setPlayButtonOn(flag: false)
+        playTimer?.invalidate()
+        playbackProgressView.progress = 0.0
+        //setPlayButtonOn(flag: false)
         audioStatus = .Stopped
         playButton.setImage(#imageLiteral(resourceName: "ic_play_arrow"), for: .normal)
     }
     
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        setPlayButtonOn(flag: false)
+        //setPlayButtonOn(flag: false)
         audioStatus = .Stopped
     }
     
@@ -588,7 +591,7 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
     
 }
 
-
+// MARK: UICollectionViewDelegate, UICollectionViewDataSource
 
 extension RecordingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -630,7 +633,6 @@ extension RecordingViewController: UICollectionViewDelegate, UICollectionViewDat
             }
         }
         return speakerCell
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
