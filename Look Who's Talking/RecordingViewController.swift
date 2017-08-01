@@ -31,6 +31,7 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
     var recordingsRef: DatabaseReference?
     var userId: String?
     var audioPlayer: AVAudioPlayer!
+    var orientation: Orientation?
     
     // MARK: Outlets
     
@@ -46,7 +47,11 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
+            orientation = Orientation.Portrait
+        } else {
+            orientation = Orientation.Landscape
+        }
         authenticate()
         NotificationCenter.default.addObserver(self, selector: #selector(updateSpeakers), name: newSpeaker, object: nil)
     }
@@ -103,9 +108,9 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
     @objc func updateSpeakers() {
         for i in 0..<speakers.count {
             let cell = speakersCollectionView.cellForItem(at: IndexPath(item: i, section: 0)) as! SpeakerCollectionViewCell
-            if speakers[i] == " " {
+            //if speakers[i] == " " {
                 speakers[i] = cell.speakerLabel.text!
-            }
+           // }
             
         }
         updatePercentSpeakingTime()
@@ -275,6 +280,7 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
             self.recordingsRef?.childByAutoId().setValue(currentRecording)
             self.cleanUpViewAfterRecording()
             self.activateButton(button: self.playButton, activate: true)
+            self.activateButton(button: self.numSpeakers, activate: true)
         })
         
         let cancelButton = UIAlertAction(title: "Discard", style: .cancel, handler: { _ in
@@ -564,6 +570,13 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
         }
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
+            
+        }
+        speakersCollectionView.layoutIfNeeded()
+    }
+    
     // MARK: - Helpers
     
     func getURLforMemo() -> NSURL {
@@ -573,9 +586,6 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
         return NSURL.fileURL(withPath: filePath) as NSURL
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        speakersCollectionView.layoutIfNeeded()
-    }
 }
 
 
@@ -584,9 +594,10 @@ extension RecordingViewController: UICollectionViewDelegate, UICollectionViewDat
     
     @available(iOS 6.0, *)
    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
+        switch orientation! {
+        case .Portrait:
             return speakers.count
-        } else {
+        case .Landscape:
             if section == 0 {
                 return speakers.count/2 + speakers.count%2
             } else {
@@ -596,9 +607,10 @@ extension RecordingViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
+        switch orientation! {
+        case .Portrait:
             return 1
-        } else {
+        case .Landscape:
             return 2
         }
     }
@@ -606,8 +618,19 @@ extension RecordingViewController: UICollectionViewDelegate, UICollectionViewDat
     @available(iOS 6.0, *)
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let speakerCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Speaker", for: indexPath) as! SpeakerCollectionViewCell
-        speakerCell.populateCell(speaker: speakers[indexPath.item], time: speakerTimes[indexPath.item])
+        switch orientation! {
+        case .Portrait:
+            speakerCell.populateCell(speaker: speakers[indexPath.item], time: speakerTimes[indexPath.item])
+        case .Landscape:
+            if indexPath.section == 0{
+                speakerCell.populateCell(speaker: speakers[indexPath.item], time: speakerTimes[indexPath.item])
+                
+            } else {
+                speakerCell.populateCell(speaker: speakers[indexPath.item+speakers.count/2+speakers.count%2], time: speakerTimes[indexPath.item+speakers.count/2+speakers.count%2])
+            }
+        }
         return speakerCell
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

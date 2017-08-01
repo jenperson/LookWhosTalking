@@ -29,3 +29,7 @@ enum AudioStatus: Int, CustomStringConvertible {
     }
 }
 
+enum Orientation: Int {
+    case Portrait = 0,
+    Landscape = 1
+}
