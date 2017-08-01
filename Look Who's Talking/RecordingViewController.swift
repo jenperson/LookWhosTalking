@@ -8,7 +8,7 @@
 
 import UIKit
 import AVFoundation
-import FirebaseDatabase
+import Firebase
 
 let newSpeaker = NSNotification.Name("newSpeaker")
 var isRecording = false
@@ -29,7 +29,7 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
     var currentSpeakerTime: Float = 0.0
     var ref: DatabaseReference?
     var recordingsRef: DatabaseReference?
-    
+    var userId: String?
     var audioPlayer: AVAudioPlayer!
     
     // MARK: Outlets
@@ -46,10 +46,8 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ref = Database.database().reference()
         
-        recordingsRef = ref?.child("recordings")
-        
+        authenticate()
         NotificationCenter.default.addObserver(self, selector: #selector(updateSpeakers), name: newSpeaker, object: nil)
     }
     
@@ -69,6 +67,24 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
     override func viewWillDisappear(_ animated: Bool) {
         // remove observers
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    func authenticate() {
+        Auth.auth().signInAnonymously() { (user, error) in
+            if let error = error {
+                print("Cannot authenticate -- \(error)")
+                return
+            }
+            let isAnonymous = user!.isAnonymous  // true
+            self.userId = user!.uid
+            self.configureDatabase()
+        }
+    }
+    
+    func configureDatabase() {
+        ref = Database.database().reference()
+        
+        recordingsRef = ref?.child("recordings/\(self.userId!)")
     }
     
     // set up default speakers
@@ -95,7 +111,7 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
         updatePercentSpeakingTime()
     }
     
-    func activateButton(button: UIButton, activate: Bool) {
+    func activateButton(button: UIControl, activate: Bool) {
         if activate {
             button.isUserInteractionEnabled = true
             button.tintColor = UIColor.blue
@@ -103,6 +119,27 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
             button.isUserInteractionEnabled = false
             button.tintColor = UIColor.lightGray
         }
+    }
+    
+    // check if all speakers are filled in before allowing record
+    func checkSpeakers() -> Bool {
+        print(speakers.count)
+        print(speakers.description)
+        for speaker in speakers {
+            if speaker == " " {
+                return false
+            }
+        }
+        return true
+    }
+    
+    func alert() {
+        let speakerAlert = UIAlertController(title: nil, message: "Please fill in all speaker names", preferredStyle: .alert)
+        let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        speakerAlert.addAction(okButton)
+        
+        self.present(speakerAlert, animated: true, completion: nil)
     }
     
     func grantRecordAccess() {
@@ -163,9 +200,13 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
     }
     
     @objc func recordTapped() {
-        if audioStatus != .Recording{
-            recordButton.setTitle("Stop", for: .normal)
-            startRecording()
+        if audioStatus != .Recording {
+            if checkSpeakers() {
+                recordButton.setTitle("Stop", for: .normal)
+                startRecording()
+            } else {
+                alert()
+            }
         } else {
             finishRecording(success: true)
         }
@@ -249,7 +290,6 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
     
     func finishRecording(success: Bool) {
         audioRecorder?.stop()
-        //audioRecorder = nil
         removeHighlighted(collectionView: speakersCollectionView)
         enableSpeakers(isEnabled: true)
         
@@ -393,9 +433,13 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
         // reset speaker progress
         recordProgressView.progress = Float(0.0)
         if audioStatus == .Stopped {
-            // disable adding or removing speakers. may need to change functionality later
-            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.setProgress), userInfo: nil, repeats: true)
-            startRecording()
+            if checkSpeakers() {
+                // disable adding or removing speakers. may need to change functionality later
+                timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.setProgress), userInfo: nil, repeats: true)
+                startRecording()
+            } else {
+                alert()
+            }
         } else {
             seconds = 0.0
             // enable stepper when timer ends
@@ -440,6 +484,7 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
         audioStatus = .Recording
         recordButton.setImage(#imageLiteral(resourceName: "ic_stop"), for: .normal)
         activateButton(button: playButton, activate: false)
+        activateButton(button: numSpeakers, activate: false)
     }
     
     func stopRecording() {
@@ -481,6 +526,7 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
     
     
     // MARK: Notifications
+    
     @objc func handleInterruption(notification: NSNotification) {
         if let info = notification.userInfo {
             let type = AVAudioSessionInterruptionType(rawValue: info[AVAudioSessionInterruptionTypeKey] as! UInt)
@@ -526,14 +572,35 @@ class RecordingViewController: UIViewController, AVAudioPlayerDelegate, AVAudioR
         
         return NSURL.fileURL(withPath: filePath) as NSURL
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        speakersCollectionView.layoutIfNeeded()
+    }
 }
 
 
 
 extension RecordingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     @available(iOS 6.0, *)
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return speakers.count
+   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
+            return speakers.count
+        } else {
+            if section == 0 {
+                return speakers.count/2 + speakers.count%2
+            } else {
+                return speakers.count/2
+            }
+        }
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
+            return 1
+        } else {
+            return 2
+        }
     }
     
     @available(iOS 6.0, *)

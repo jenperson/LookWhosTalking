@@ -8,6 +8,6 @@ target 'Look Who\'s Talking' do
   # Pods for Look Who's Talking
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
-  pod 'FirebaseUI'
+  #pod 'FirebaseUI'
 
 end

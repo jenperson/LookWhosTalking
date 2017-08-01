@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		364309D61F16915C00C61BBC /* RecordingHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364309D51F16915C00C61BBC /* RecordingHistoryViewController.swift */; };
 		364654471F101D31005879F1 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364654461F101D31005879F1 /* Utils.swift */; };
-		365B1CCE1F0C6E6A00E489F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 365B1CCD1F0C6E6A00E489F4 /* GoogleService-Info.plist */; };
 		36A5475B1EEEFB1B00019377 /* SpeakerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A5475A1EEEFB1B00019377 /* SpeakerCollectionViewCell.swift */; };
+		36CF52C01F2BF7E10046D51E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36CF52BF1F2BF7E00046D51E /* GoogleService-Info.plist */; };
 		36D9AA581F16F59700D9E4F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36D9AA561F16F53F00D9E4F1 /* Main.storyboard */; };
 		36D9AA5A1F16F99E00D9E4F1 /* RecordingHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D9AA591F16F99E00D9E4F1 /* RecordingHistoryTableViewCell.swift */; };
 		36FD894F1EEB473300FB27CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FD894E1EEB473300FB27CB /* AppDelegate.swift */; };
@@ -42,8 +42,8 @@
 /* Begin PBXFileReference section */
 		364309D51F16915C00C61BBC /* RecordingHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingHistoryViewController.swift; sourceTree = "<group>"; };
 		364654461F101D31005879F1 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		365B1CCD1F0C6E6A00E489F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		36A5475A1EEEFB1B00019377 /* SpeakerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerCollectionViewCell.swift; sourceTree = "<group>"; };
+		36CF52BF1F2BF7E00046D51E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Documents/Look Who's Talking/Look Who's Talking/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		36D9AA571F16F53F00D9E4F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		36D9AA591F16F99E00D9E4F1 /* RecordingHistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingHistoryTableViewCell.swift; sourceTree = "<group>"; };
 		36FD894B1EEB473300FB27CB /* Look Who's Talking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Look Who's Talking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,7 +126,7 @@
 				36D9AA561F16F53F00D9E4F1 /* Main.storyboard */,
 				36FD89571EEB473300FB27CB /* LaunchScreen.storyboard */,
 				36FD895A1EEB473300FB27CB /* Info.plist */,
-				365B1CCD1F0C6E6A00E489F4 /* GoogleService-Info.plist */,
+				36CF52BF1F2BF7E00046D51E /* GoogleService-Info.plist */,
 			);
 			path = "Look Who's Talking";
 			sourceTree = "<group>";
@@ -277,7 +277,7 @@
 			files = (
 				36D9AA581F16F59700D9E4F1 /* Main.storyboard in Resources */,
 				36FD89591EEB473300FB27CB /* LaunchScreen.storyboard in Resources */,
-				365B1CCE1F0C6E6A00E489F4 /* GoogleService-Info.plist in Resources */,
+				36CF52C01F2BF7E10046D51E /* GoogleService-Info.plist in Resources */,
 				36FD89561EEB473300FB27CB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -526,7 +526,7 @@
 				DEVELOPMENT_TEAM = 739D5HF686;
 				INFOPLIST_FILE = "Look Who's Talking/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "JP.Look-Who-s-Talking";
+				PRODUCT_BUNDLE_IDENTIFIER = com.personjennifer.lookwhostalking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -541,7 +541,7 @@
 				DEVELOPMENT_TEAM = 739D5HF686;
 				INFOPLIST_FILE = "Look Who's Talking/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "JP.Look-Who-s-Talking";
+				PRODUCT_BUNDLE_IDENTIFIER = com.personjennifer.lookwhostalking;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
